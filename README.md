@@ -37,7 +37,7 @@ Watch the tutorial video: https://drive.google.com/open?id=19aY8dNDIB-LAJoECms26
     
     Output: Once the Bandsintown results are returned, the console will show the next concert for the inputed artist name.
 
-    ![Results](/screenshots/concert.PNG)
+    ![Results](screenshots/concert.PNG)
 
     **Example 2**: Run the `spotify` command
     
@@ -45,7 +45,7 @@ Watch the tutorial video: https://drive.google.com/open?id=19aY8dNDIB-LAJoECms26
     
     Output: The program will return the first search result based on the parameters enered within the quotes. The quotes allow the user to search specifics about a song to find exact results (i.e. "stronger kanye" returns Stronger by Kanye West while "stronger" returns a song from a different artist. The user can then click the preview url to navigate to spotify.
 
-    ![Results](/screenshots/spotify.PNG)
+    ![Results](screenshots/spotify.PNG)
 
     **Example 3**: Run the `movie` command
     
@@ -53,7 +53,7 @@ Watch the tutorial video: https://drive.google.com/open?id=19aY8dNDIB-LAJoECms26
     
     Output: Once the movie name is entered the system then provides more detailed information about the film from OMDB.
 
-    ![Results](/screenshots/omdb.PNG)
+    ![Results](screenshots/omdb.PNG)
 
 
     **Example 4**: Run the `do` command
@@ -62,7 +62,7 @@ Watch the tutorial video: https://drive.google.com/open?id=19aY8dNDIB-LAJoECms26
         
     Output: Calling this function will pull results from the random.txt file, and performs the operation listed. In this case, the operation called is a spotify search for "I Want it That Way".
     
-    ![Results](/screenshots/do.PNG)
+    ![Results](screenshots/do.PNG)
 
 - - -
 
