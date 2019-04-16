@@ -9,36 +9,30 @@ var colors = require('colors');
 var spotify = new Spotify(keys.spotify);
 var axios = require("axios");
 var moment = require("moment");
+var input = process.argv.slice(3).join("");
+var cinema = process.argv.slice(3).join("+");
 
 var action = process.argv[2];
 
 switch (action) {
 
-    case "concert-this":
+    case "concert":
         concert();
         break;
-    case "spotify-this-song":
-        spotifySong();
-    case "movie-this":
+    case "spotify":
+        spotifySong(input);
+        break;
+    case "movie":
         movie();
         break;
-    case "do-what-it-says":
+    case "do":
         getRandom();
         break;
 };
 
-function concert(){
-    var artist = ""
-    for (var i = 3; i < process.argv.length; i++) {
-      if (i > 3 && i < process.argv.length) {
-        artist = artist + "+" + process.argv[i];
-      }
-      else {
-        artist += process.argv[i];
-      };
-    };
 
-    var bandURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
+function concert(){
+    var bandURL = "https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp"
     console.log(bandURL)
     axios.get(bandURL).then(
         function (response) {
@@ -57,7 +51,7 @@ function concert(){
 
 function movie() {
 
-    var queryUrl = "http://www.omdbapi.com/?t=" + process.argv[3] + "&y=&plot=short&apikey=trilogy";
+    var queryUrl = "http://www.omdbapi.com/?t=" + cinema + "&y=&plot=short&apikey=trilogy";
     console.log(queryUrl);
 
     axios.get(queryUrl).then(
@@ -82,15 +76,33 @@ function movie() {
     );
 };
 
+function spotifySong(music){
+spotify.search({ 
+    type: 'track', 
+    query: music }, 
+    function(err, data) {
+  if (err) {
+    return console.log('Error occurred: ' + err);
+  }
+  console.log("Artist".green)
+  console.log(data.tracks.items[0].artists[0].name.magenta)
+  console.log("Song".green)
+  console.log(data.tracks.items[0].name.magenta)
+  console.log("Album".green)
+  console.log(data.tracks.items[0].album.name.magenta)
+  console.log("Preview URL".green)
+  console.log(data.tracks.items[0].external_urls.spotify.magenta);
+  
+});
+}
 
-// function song() {
-
-//     var queryUrl = "http://www.omdbapi.com/?t=" + process.argv[3] + "&y=&plot=short&apikey=trilogy";
-//     console.log(queryUrl);
-
-//     axios.get(queryUrl).then(
-//         function (response) {
-
-//         });
-//     };
-
+function getRandom(){
+    fs.readFile("./random.txt", "utf8", (error, data)=>{
+        if (error) {
+            console.log("error!")
+        }
+        var randomData = data.split(",");
+        spotifySong(randomData[1])
+            console.log(randomData)
+    })
+}
