@@ -75,5 +75,6 @@ Watch the tutorial video: https://drive.google.com/open?id=19aY8dNDIB-LAJoECms26
 * Node packages:
     * Node-Spotify-API
     * Request
+    * Colors
     * Moment
     * DotEnv
